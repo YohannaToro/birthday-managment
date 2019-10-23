@@ -97,7 +97,7 @@ export default class login extends Component {
                  
                  <li>  <Link 
                  style={{color:"white"}}
-                 to={{pathname:this.state.ruta}}
+                 to={{pathname:"/profile"}}
             >Sign in </Link> </li>
                   
                 </MDBBtn>
