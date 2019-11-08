@@ -6,12 +6,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import TodoList from '../administrator/managment'
 import Side from '../sidebar'
+import axios from 'axios'
 export default class createuser extends Component {
     constructor(props){
         super(props);
         this.state={
-            data:{
-                
                     nombre:"",
                     apellido:"",
                     dia:0,
@@ -22,8 +21,57 @@ export default class createuser extends Component {
                     
             }
         }
+    handleNombre(e){
+      this.setState({nombre:e.target.value})
     }
+handleApellido(e){
+this.setState({apellido:e.target.value})
+    }
+    handleCorreo(e){
+      this.setState({correo:e.target.value})
+    }
+    handleDia(e){
+      this.setState({dia:e.target.value})
+    }
+    handleMes(e){
+      this.setState({mes:e.target.value})
+    }
+    handlePerfil(e){
+      this.setState({perfil:e.target.value})
+    }
+    handleObservacion(e){
+      this.setState({observacion:e.target.value})
+    }
+    handleSubmit(e){
+      e.preventDefault()
+      console.log("holi")
+      var nickname=this.state.nombre.trim();
+      var lastname=this.state.apellido.trim()
+      console.log(this.state.dia)
+      var day=this.state.dia.trim();
+      var month=this.state.mes.trim();
+      var correo=this.state.correo.trim();
+      if(!nickname || !lastname || !day || !month){
+        return;
+      }
 
+      axios.post('/users/add',{
+        nombre:nickname,
+        apellido:lastname,
+        dia:day,
+        mes:month,
+        correo:correo,
+        perfil:this.state.perfil,
+        observacion:this.state.observacion
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    }
     render() {
         return (
             <div>
@@ -38,7 +86,7 @@ export default class createuser extends Component {
       <MDBRow>
           <MDBCol md="3"></MDBCol>
         <MDBCol md="6">
-          <form>
+          <form onSubmit={e => this.handleSubmit(e)}>
             <p className="h5 text-center mb-4">Create User</p>
             <div className="grey-text">
               <MDBInput
@@ -47,6 +95,8 @@ export default class createuser extends Component {
                 group
                 type="text"
                 validate
+                value={this.state.nombre}
+                onChange={e => this.handleNombre(e)}
                 error="wrong"
                 success="right"
               />
@@ -54,9 +104,11 @@ export default class createuser extends Component {
                 label="Full name"
                 icon="envelope"
                 group
-                type="email"
+                type="text"
                 validate
                 error="wrong"
+                value={this.state.apellido}
+                onChange={e => this.handleApellido(e)}
                 success="right"
               />
               <MDBInput
@@ -66,6 +118,8 @@ export default class createuser extends Component {
                 type="text"
                 validate
                 error="wrong"
+                value={this.state.dia}
+                onChange={e => this.handleDia(e)}
                 success="right"
               />
               <MDBInput
@@ -74,6 +128,8 @@ export default class createuser extends Component {
                 group
                 type="text"
                 validate
+                value={this.state.mes}
+                onChange={e => this.handleMes(e)}
                 error="wrong"
                 success="right"
               />
@@ -83,6 +139,8 @@ export default class createuser extends Component {
                 group
                 type="text"
                 validate
+                value={this.state.correo}
+                onChange={e => this.handleCorreo(e)}
                 error="wrong"
                 success="right"
               />
@@ -92,6 +150,8 @@ export default class createuser extends Component {
                 group
                 type="text"
                 validate
+                value={this.state.perfil}
+                onChange={e => this.handlePerfil(e)}
                 error="wrong"
                 success="right"
               />
@@ -100,10 +160,12 @@ export default class createuser extends Component {
                 rows="2"
                 label="Observation"
                 icon="pencil-alt"
+                value={this.state.observacion}
+                onChange={e => this.handleObservacion(e)}
               />
             </div>
             <div className="text-center">
-              <MDBBtn outline color="secondary">
+              <MDBBtn outline color="secondary" type="submit">
                 Send <MDBIcon far icon="paper-plane" className="ml-1" />
               </MDBBtn>
             </div>
