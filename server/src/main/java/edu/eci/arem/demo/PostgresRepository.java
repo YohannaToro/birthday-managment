@@ -72,6 +72,12 @@ public class PostgresRepository implements SaludoPersistence {
 			throw new RuntimeException(e);
 		}
     }
+
+	@Override
+	public void Update(Saludo sa) throws SQLException {
+		// TODO Auto-generated method stub
+
+	}
 		
 	
 }

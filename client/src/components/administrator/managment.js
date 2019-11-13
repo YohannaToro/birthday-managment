@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import { MDBDataTable } from 'mdbreact';
+import { MDBDataTable ,MDBCard, MDBCardHeader, MDBCardBody,Button,MDBBtn} from 'mdbreact';
+import ModalUpdate from '../additions/modalUpdate'
 import axios from 'axios'
 export default class managment extends Component {
     constructor(props){
@@ -45,27 +46,49 @@ export default class managment extends Component {
                     width: 100
                   },
                   {
-                    label: 'Name',
-                    field: 'description',
-                    sort: 'asc',
+                    label: 'Update',
+                    field: 'update',
                     width: 100
                   }
                 ],
                 rows: [
+
+                  
                 ]
               },
               ro:[]
         }
     }
+
+    handleClick(){
+      console.log("holiiii :(")
+
+    }
     componentDidMount() {
         let tasks = this.state.data.rows;
         let taCo=this.state.data.columns;
         fetch("http://localhost:8081/users").then((Response)=> Response.json())
-        .then(category =>{
+        .then((category) =>{
+          var i;var list=[]
+for (i = 0; i < category.length; i++) {
+  var aiuda={
+    apellido:category[i].apellido,
+    dia:category[i].dia,
+    mes:category[i].mes,
+    correo:category[i].correo,
+    perfil:category[i].perfil,
+    observacion:category[i].observacion,
+    update: <MDBBtn color="green" onClick={this.handleClick} size="sm">Update</MDBBtn>
+  }
+ list.push(aiuda)
+}
+            
+            console.log("heeeeeeeeeeeeelp")
+            console.log(category)
             var newTasks = tasks.concat([category]);
-            console.log(newTasks);
+            console.log(list);
             console.log("category")
-            this.setState({data:{columns:taCo,rows:category}}); 
+            this.setState({data:{columns:taCo,rows:list}}); 
             this.setState({ro:category})
        
         })
@@ -74,12 +97,20 @@ export default class managment extends Component {
     render() {
         return (
             <div>
-                <MDBDataTable
-      striped
+              <MDBCard>
+      <MDBCardHeader tag="h3" className="text-center font-weight-bold text-uppercase py-4">
+        All users
+      </MDBCardHeader>
+      <MDBCardBody>
+                <MDBDataTable btn
+     
       hover
       data={this.state.data}
+      striped bordered 
+     
     />
-                
+    
+          </MDBCardBody></MDBCard>      
             </div>
         )
     }
