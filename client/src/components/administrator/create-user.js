@@ -55,7 +55,7 @@ this.setState({apellido:e.target.value})
         return;
       }
 
-      axios.post('/users/add',{
+      axios.post('http://localhost:8081/users/add',{
         nombre:nickname,
         apellido:lastname,
         dia:day,
