@@ -78,6 +78,35 @@ public class PostgresRepository implements SaludoPersistence {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public Saludo getUser(String name) {
+		String query = "SELECT * FROM informacion where apellido="+name+";";
+		Connection connection = null;
+		try {
+			connection = dataSource.getConnection();
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			
+				Saludo auction = new Saludo();
+				//auction.setDescription(rs.getString("nombre"));
+				auction.setApellido(rs.getString("apellido"));
+				auction.setDia(Integer.parseInt(rs.getString("dia")));
+				auction.setMes(Integer.parseInt(rs.getString("mes")));
+				auction.setCorreo(rs.getString("correo"));
+				auction.setPerfil(rs.getString("perfil"));
+				auction.setObservacion(rs.getString("observacion"));
+
+
+			connection.close();
+			return auction;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		}
+	
+	}
 		
 	
 }

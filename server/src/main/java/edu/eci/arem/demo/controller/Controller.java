@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,14 @@ public class Controller {
 	public ResponseEntity<?> listAllUsers(){
 	    try {
 	        return new ResponseEntity<>(auctionRepository.findAll(),HttpStatus.ACCEPTED);
+	    } catch (Exception ex) {
+	        return new ResponseEntity<>("mal",HttpStatus.NOT_FOUND);
+	    }
+	}
+	@RequestMapping(value="/users/{id}",method = RequestMethod.GET)
+	public ResponseEntity<?> getUser(@PathVariable("id") String id){
+	    try {
+	        return new ResponseEntity<>(auctionRepository.getUser(id),HttpStatus.ACCEPTED);
 	    } catch (Exception ex) {
 	        return new ResponseEntity<>("mal",HttpStatus.NOT_FOUND);
 	    }

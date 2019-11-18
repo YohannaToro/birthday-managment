@@ -29,6 +29,12 @@ public class SaludoPersistenceImpl implements SaludoServices{
 
 	}
 
+	@Override
+	public Saludo getUser(String name) throws SQLException {
+		
+		return auctionRepository.getUser(name);
+	}
+
 
 }
 
