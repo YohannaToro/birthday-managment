@@ -25,7 +25,14 @@ export default class managment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      updateValue: {},
+      updateValue: {
+        apellido:"",
+        correo:"",
+        dia:"",
+        mes:"",
+        perfil:"",
+        observacion:""
+      },
       modal2: false,
       modal3: false,
       modal4: false,
@@ -88,7 +95,10 @@ export default class managment extends Component {
   handleUpdate(){
     let modalNumber = "modal4";
     this.setState({ [modalNumber]: !this.state[modalNumber] });
-    axios.patch('http://demo0725191.mockable.io/patch_data', this.state.updateValue);
+    console.log("hiiii")
+    console.log(this.state.updateValue)
+    
+    axios.patch('http://localhost:8081/users/update', this.state.updateValue);
 
   
   }
