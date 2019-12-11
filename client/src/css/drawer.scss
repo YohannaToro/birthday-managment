@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Cute+Font&display=swap");
 $font-letter:'Cute Font';
-$back:black;
+$back:#89B582;
 html {
   
   -webkit-background-size: cover;
@@ -12,6 +12,9 @@ html {
   font-family: $font-letter;
   background-color: $back;
   font-size: 250%;
+}
+.modal-u{
+  padding-bottom: 10%;
 }
   .user-profile img {
     font-family: $font-letter;

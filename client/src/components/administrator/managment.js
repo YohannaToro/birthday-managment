@@ -25,6 +25,7 @@ export default class managment extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id:"",
       updateValue: {
         apellido:"",
         correo:"",
@@ -97,8 +98,28 @@ export default class managment extends Component {
     this.setState({ [modalNumber]: !this.state[modalNumber] });
     console.log("hiiii")
     console.log(this.state.updateValue)
+    var k= axios.get('http://localhost:8081/users/'+this.state.id)
+    console.log(k)
+    var obj;var i;
+    for (i = 0; i < this.state.data.rows.length; i++) {
+      var dataIn = this.state.data.rows[i];
+      if (dataIn.apellido === this.state.id) {
+        console.log("holiii");
     
-    axios.patch('http://localhost:8081/users/update', this.state.updateValue);
+        obj=Object.assign(dataIn,this.state.updateValue)
+        console.log("obj")
+        console.log(obj)
+        this.setState({ updateValue: dataIn });
+      }
+    }
+    
+
+    
+    axios.put('http://localhost:8081/users/update', obj).then(response => {
+      console.log("todo funca")
+    }, response => {
+      this.handleEditError(response)
+    });
 
   
   }
@@ -141,7 +162,8 @@ export default class managment extends Component {
   }
   toggle(e) {
     console.log(e.target.id);
-    let modalNumber = "modal4";
+    this.setState({id:e.target.id})
+    let modalNumber = "modal2";
     this.setState({ [modalNumber]: !this.state[modalNumber] });
     var i;
     console.log(this.state.data)
@@ -165,13 +187,13 @@ export default class managment extends Component {
           </MDBCardHeader>
           <MDBCardBody>
             <MDBDataTable btn hover data={this.state.data} striped bordered />
-            <MDBModal isOpen={this.state.modal4} toggle={this.toggle} size="lg">
-              <MDBModalHeader toggle={this.toggle}>Update User</MDBModalHeader>
+            <MDBModal isOpen={this.state.modal2} toggle={this.toggle} size="md">
+              <MDBModalHeader toggle={this.toggle} className="modal-u" >Update User</MDBModalHeader>
               <MDBModalBody>
                 <MDBRow>
-                  <MDBCol md="6">
+                <MDBCol md="2"></MDBCol>
+                  <MDBCol md="8">
                     <form>
-                      <p className="h4 text-center py-4">Subscribe</p>
                       <label
                         htmlFor="defaultFormCardNameEx"
                         className="grey-text font-weight-light"
@@ -255,14 +277,15 @@ export default class managment extends Component {
                       <div className="text-center py-4 mt-3">
                       </div>
                     </form>
+                    <MDBCol md="2"></MDBCol>
                   </MDBCol>
                 </MDBRow>
               </MDBModalBody>
               <MDBModalFooter>
-                <MDBBtn color="secondary" onClick={this.toggle}>
+                <MDBBtn color="black" onClick={this.toggle}>
                   Close
                 </MDBBtn>
-                <MDBBtn color="primary" onClick={this.handleUpdate}>Save changes</MDBBtn>
+                <MDBBtn color="green" onClick={this.handleUpdate}>Save changes</MDBBtn>
               </MDBModalFooter>
             </MDBModal>
           </MDBCardBody>

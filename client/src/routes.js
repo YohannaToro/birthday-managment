@@ -8,6 +8,7 @@ import Login from './components/register/signin';
 import Todo from './components/administrator/profile';
 import Create from './components/administrator/create-user';
 import Modal from './components/additions/modalUpdate'
+import not from './components/additions/404'
 
 
 const Routes = () =>
@@ -17,6 +18,7 @@ const Routes = () =>
       <Route exact path="/profile" component={Todo} />
       <Route exact path="/create" component={Create} />
       <Route exact path="/modal" component={Modal} />
+      <Route component={not}/>
     </Switch>
   </App>;
 
