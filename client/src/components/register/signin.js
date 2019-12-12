@@ -23,7 +23,14 @@ export default class login extends Component {
         
         //getUser(this.state,console.log,console.log);
       }
-      onSubmit  () {
+      onSubmit  (e) {
+       
+        this.setState({ruta:"/"})
+        console.log(this.state.password)
+        if(this.state.password==='admin' & this.state.username==='admin'){
+          this.setState({ruta:"/profile"})
+
+        }
         
        
             this.setState({ruta:"/profile"})
@@ -97,7 +104,7 @@ export default class login extends Component {
                  
                  <li>  <Link 
                  style={{color:"white"}}
-                 to={{pathname:"/profile"}}
+                 to={{pathname:this.state.ruta}}
             >Sign in </Link> </li>
                   
                 </MDBBtn>

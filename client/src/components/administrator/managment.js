@@ -19,7 +19,6 @@ import {
   MDBBtn
 } from "mdbreact"
 import axios from 'axios'
-import ModalUpdate from "../additions/modalUpdate";
 
 export default class managment extends Component {
   constructor(props) {
@@ -160,6 +159,7 @@ export default class managment extends Component {
         this.setState({ ro: category });
       });
   }
+
   toggle(e) {
     console.log(e.target.id);
     this.setState({id:e.target.id})
@@ -175,10 +175,11 @@ export default class managment extends Component {
       }
     }
   }
+
   render() {
     return (
       <div>
-        <MDBCard>
+        <MDBCard style={{'width':'150%'}}>
           <MDBCardHeader
             tag="h3"
             className="text-center font-weight-bold text-uppercase py-4"
@@ -288,7 +289,12 @@ export default class managment extends Component {
                 <MDBBtn color="green" onClick={this.handleUpdate}>Save changes</MDBBtn>
               </MDBModalFooter>
             </MDBModal>
+             
+
+
           </MDBCardBody>
+          
+       
         </MDBCard>
       </div>
     );

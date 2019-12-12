@@ -17,7 +17,7 @@ const Routes = () =>
       <Route exact path="/" component={Login} />
       <Route exact path="/profile" component={Todo} />
       <Route exact path="/create" component={Create} />
-      <Route exact path="/modal" component={Modal} />
+      <Route exact path="/uploadImage" component={Modal} />
       <Route component={not}/>
     </Switch>
   </App>;

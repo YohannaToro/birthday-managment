@@ -78,8 +78,10 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
+      <Button href="/profile" style={{color:'white'}}>Home</Button>
       <Button onClick={toggleDrawer('left', true)} style={{color:'white'}}>Menu</Button>
       <Button href="/create" style={{color:'white'}}>Create User</Button>
+      <Button href="/uploadImage" style={{color:'white'}}>Upload Image</Button>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
