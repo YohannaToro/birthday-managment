@@ -55,36 +55,6 @@ export default class cahngeImage extends Component {
             width: 150
           },
           {
-            label: "Dia",
-            field: "dia",
-            sort: "asc",
-            width: 270
-          },
-          {
-            label: "Mes",
-            field: "mes",
-            sort: "asc",
-            width: 200
-          },
-          {
-            label: "Correo",
-            field: "Correo",
-            sort: "asc",
-            width: 100
-          },
-          {
-            label: "Perfil",
-            field: "perfil",
-            sort: "asc",
-            width: 150
-          },
-          {
-            label: "Observacion",
-            field: "observacion",
-            sort: "asc",
-            width: 100
-          },
-          {
             label: "Update",
             field: "update",
             width: 100
@@ -150,11 +120,6 @@ export default class cahngeImage extends Component {
         for (i = 0; i < category.length; i++) {
           var aiuda = {
             apellido: category[i].apellido,
-            dia: category[i].dia,
-            mes: category[i].mes,
-            correo: category[i].correo,
-            perfil: category[i].perfil,
-            observacion: category[i].observacion,
             update: (
               <MDBBtn
                 color="green"
@@ -217,7 +182,9 @@ export default class cahngeImage extends Component {
           <Side/>
         </Toolbar>
       </AppBar>
-
+      <MDBContainer style={{marginTop:'10%'}}>
+        <MDBRow md='2'></MDBRow>
+        <MDBRow md="8">
         <MDBCard style={{'width':'150%'}}>
           <MDBCardHeader
             tag="h3"
@@ -228,7 +195,7 @@ export default class cahngeImage extends Component {
           <MDBCardBody>
             <MDBDataTable btn hover data={this.state.data} striped bordered />
             <MDBModal isOpen={this.state.modal2} toggle={this.toggle} size="md">
-              <MDBModalHeader toggle={this.toggle} className="modal-u" >Update User</MDBModalHeader>
+              <MDBModalHeader toggle={this.toggle} className="modal-u" >Update photo</MDBModalHeader>
               <MDBModalBody>
                 <MDBRow>
                 <MDBCol md="2"></MDBCol>
@@ -270,7 +237,9 @@ export default class cahngeImage extends Component {
           </MDBCardBody>
           
         </MDBCard>
-      
+        </MDBRow>
+        <MDBRow md='2'></MDBRow>
+        </MDBContainer>
       </div>
     );
   }

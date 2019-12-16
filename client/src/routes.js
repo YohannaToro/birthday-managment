@@ -9,6 +9,7 @@ import Todo from './components/administrator/profile';
 import Create from './components/administrator/create-user';
 import Modal from './components/additions/modalUpdate'
 import not from './components/additions/404'
+import block from './components/administrator/block'
 
 
 const Routes = () =>
@@ -18,6 +19,7 @@ const Routes = () =>
       <Route exact path="/profile" component={Todo} />
       <Route exact path="/create" component={Create} />
       <Route exact path="/uploadImage" component={Modal} />
+      <Route exact path="/block" component={block} />
       <Route component={not}/>
     </Switch>
   </App>;

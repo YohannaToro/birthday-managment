@@ -18,6 +18,12 @@ import {
   MDBBtn
 } from "mdbreact"
 import axios from 'axios'
+import { makeStyles} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import TodoList from '../administrator/managment'
+import Side from '../sidebar'
 
 export default class managment extends Component {
   constructor(props) {
@@ -45,38 +51,8 @@ export default class managment extends Component {
             width: 150
           },
           {
-            label: "Dia",
-            field: "dia",
-            sort: "asc",
-            width: 270
-          },
-          {
-            label: "Mes",
-            field: "mes",
-            sort: "asc",
-            width: 200
-          },
-          {
-            label: "Correo",
-            field: "Correo",
-            sort: "asc",
-            width: 100
-          },
-          {
-            label: "Perfil",
-            field: "perfil",
-            sort: "asc",
-            width: 150
-          },
-          {
-            label: "Observacion",
-            field: "observacion",
-            sort: "asc",
-            width: 100
-          },
-          {
-            label: "Update",
-            field: "update",
+            label: "Block",
+            field: "block",
             width: 100
           }
         ],
@@ -133,11 +109,7 @@ export default class managment extends Component {
         for (i = 0; i < category.length; i++) {
           var aiuda = {
             apellido: category[i].apellido,
-            dia: category[i].dia,
-            mes: category[i].mes,
-            correo: category[i].correo,
-            perfil: category[i].perfil,
-            observacion: category[i].observacion,
+
             update: (
               <MDBBtn
                 color="green"
@@ -145,7 +117,7 @@ export default class managment extends Component {
                 onClick={this.toggle}
                 size="sm"
               >
-                Update
+                Block
               </MDBBtn>
             )
           };
@@ -178,14 +150,21 @@ export default class managment extends Component {
   render() {
     return (
       <div>
-        <MDBCol md='1'/>
-        <MDBCol md='10'>
+                      <CssBaseline />
+      <AppBar>
+        <Toolbar className="nav-changes">
+          <Side/>
+        </Toolbar>
+      </AppBar>
+      <MDBContainer style={{marginTop:'10%'}}>
+        <MDBCol md='3'/>
+        <MDBCol md='6'>
         <MDBCard style={{'width':'150%'}}>
           <MDBCardHeader
             tag="h3"
             className="text-center font-weight-bold text-uppercase py-4"
           >
-            All users
+            Block users
           </MDBCardHeader>
           <MDBCardBody>
             <MDBDataTable btn hover data={this.state.data} striped bordered />
@@ -304,7 +283,8 @@ export default class managment extends Component {
        
         </MDBCard>
         </MDBCol>
-        <MDBCol md='1'/>
+        <MDBCol md='3'/>
+        </MDBContainer>
       </div>
     );
   }

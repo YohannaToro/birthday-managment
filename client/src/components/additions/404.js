@@ -12,7 +12,7 @@ export default class notFound extends Component {
   <div class="frontend">
     <span class="frontend-text"></span>
   </div>
-  <div class="final">Happy <span>Birthday</span></div>
+  <div class="final">it's not  <span>your birthday.</span></div>
 </div>
 <span class="fa fa-birthday-cake"></span></div>
         )

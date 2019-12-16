@@ -51,7 +51,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
             <div className="user-profile">
-      <img src="https://farm5.staticflickr.com/4136/4817542998_55a7eb8d8b_q.jpg"/>
+      <img src="https://www.escuelaing.edu.co/uploads/generica/logo_lab_de_informatica_nuevo.jpg"/>
       <div className="user-details">
         <h4>Admin</h4>
         <p>bithday managment</p>
@@ -65,9 +65,9 @@ export default function TemporaryDrawer() {
             <ListItemText>logout</ListItemText>
 
           </ListItem>
-          <ListItem button component={Link} to="/settings/profile">
+          <ListItem button component={Link} to="/addProfile">
             <ListItemIcon ><MailIcon></MailIcon></ListItemIcon>
-            <ListItemText>edit profile</ListItemText>
+            <ListItemText>add profile</ListItemText>
 
           </ListItem>
         </List>
@@ -79,8 +79,10 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <Button href="/profile" style={{color:'white'}}>Home</Button>
+      <Button href="/massive" style={{color:'white'}}>Carga masiva</Button>
       <Button onClick={toggleDrawer('left', true)} style={{color:'white'}}>Menu</Button>
       <Button href="/create" style={{color:'white'}}>Create User</Button>
+      <Button href="/block" style={{color:'white'}}>Bloquear usuario</Button>
       <Button href="/uploadImage" style={{color:'white'}}>Upload Image</Button>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}

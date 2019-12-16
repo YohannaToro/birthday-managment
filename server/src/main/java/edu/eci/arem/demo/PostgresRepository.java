@@ -61,9 +61,11 @@ public class PostgresRepository implements SaludoPersistence {
 		String na=sa.getDescription(); String ap=sa.getApellido();
 		String di=Integer.toString(sa.getDia());String me=Integer.toString(sa.getMes());
 		String pe=sa.getPerfil();String co=sa.getCorreo(); String ob=sa.getObservacion();
+		
 		String query = "insert Into informacion values ('"+na+"','"+ap+"','"+di+"','"+me+"','"+co+"','"+pe+"','"+ob+"','"+null+"','"+null+"','"+null+"');";
         Connection connection = null;
 		try {
+			
 			connection = dataSource.getConnection();
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(query);
@@ -77,11 +79,21 @@ public class PostgresRepository implements SaludoPersistence {
 	@Override
 	public void Update(Saludo sa) throws SQLException {
 		System.out.println(sa);
+		String query=null;
 		String na=sa.getDescription(); String ap=sa.getApellido();
 		String di=Integer.toString(sa.getDia());String me=Integer.toString(sa.getMes());
 		String pe=sa.getPerfil();String co=sa.getCorreo(); String ob=sa.getObservacion();
 		//String q="update into informacion set set dia='"+di+"';
-		String query = "UPDATE informacion set dia='"+di+"', mes='"+me+"', observacion='"+ob+"', correo='"+co+"', perfil='"+pe+"' where apellido='"+ap+"';";
+		if (sa.getDia()>31 || sa.getDia()<=0 ){
+			System.out.println("hola");
+			 query = "UPDATE informacion set mes='"+me+"', observacion='"+ob+"', correo='"+co+"', perfil='"+pe+"' where apellido='"+ap+"';";
+		}
+		if (sa.getMes()>12 || sa.getMes()<1){
+			 query = "UPDATE informacion set dia='"+di+"', observacion='"+ob+"', correo='"+co+"', perfil='"+pe+"' where apellido='"+ap+"';";
+		}
+		if(query==null){
+			
+		 query = "UPDATE informacion set dia='"+di+"', mes='"+me+"', observacion='"+ob+"', correo='"+co+"', perfil='"+pe+"' where apellido='"+ap+"';";}
 		System.out.println("query"+query);
 		Connection connection = null;
 		try {

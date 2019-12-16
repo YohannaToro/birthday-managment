@@ -144,17 +144,15 @@ this.setState({apellido:e.target.value})
                 error="wrong"
                 success="right"
               />
-              <MDBInput
-                label="profile"
-                icon="tag"
-                group
-                type="text"
-                validate
-                value={this.state.perfil}
-                onChange={e => this.handlePerfil(e)}
-                error="wrong"
-                success="right"
-              />
+                <select className="browser-default custom-select">
+          <option>Choose your Profile</option>
+          <option value="1">Decano</option>
+          <option value="2">Profesor</option>
+          <option value="3">Estudiante</option>
+          <option value="4">Graduado</option>
+          <option value="5">Rector</option>
+        </select>
+
               <MDBInput
                 type="textarea"
                 rows="2"
