@@ -122,6 +122,50 @@ export default class managment extends Component {
   
   }
 
+  handleNombre(e){
+    var x={nombre:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+handleApellido(e){
+  var x={apellido:e.target.value}
+  var dataIn=this.state.updateValue
+  var obj=Object.assign(dataIn,x)
+  this.setState({updateValue:obj})
+  }
+  handleCorreo(e){
+    var x={correo:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+  handleDia(e){
+    var x={dia:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+  handleMes(e){
+    var x={mes:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+  handlePerfil(e){
+    var x={perfil:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+  handleObservacion(e){
+    
+    var x={observacion:e.target.value}
+    var dataIn=this.state.updateValue
+    var obj=Object.assign(dataIn,x)
+    this.setState({updateValue:obj})
+  }
+
   componentDidMount() {
     let tasks = this.state.data.rows;
     let taCo = this.state.data.columns;
@@ -207,7 +251,7 @@ export default class managment extends Component {
                         id="defaultFormCardNameEx"
                         className="form-control"
                         value={this.state.updateValue.apellido}
-                        onChange={(e) => this.setState({updateValue: {apellido:e.target.value}})}
+                        onChange={e=>this.handleApellido(e)}
                       />
                       <br />
                       <label
@@ -221,7 +265,7 @@ export default class managment extends Component {
                         id="defaultFormCardEmailEx"
                         className="form-control"
                         value={this.state.updateValue.correo}
-                        onChange={(e) => this.setState({updateValue: {correo:e.target.value}})}
+                        onChange={e =>this.handleCorreo(e)}
                       />
                         <label
                         htmlFor="defaultFormCardEmailEx"
@@ -234,7 +278,7 @@ export default class managment extends Component {
                         id="defaultFormCardEmailEx"
                         className="form-control"
                         value={this.state.updateValue.dia}
-                        onChange={(e) => this.setState({updateValue: {dia:e.target.value}})}
+                        onChange={e=>this.handleDia(e)}
                       />
                         <label
                         htmlFor="defaultFormCardEmailEx"
@@ -247,7 +291,7 @@ export default class managment extends Component {
                         id="defaultFormCardEmailEx"
                         className="form-control"
                         value={this.state.updateValue.mes}
-                        onChange={(e) => this.setState({updateValue: {mes:e.target.value}})}
+                        onChange={e=>this.handleMes(e)}
                       />
                         <label
                         htmlFor="defaultFormCardEmailEx"
@@ -260,7 +304,7 @@ export default class managment extends Component {
                         id="defaultFormCardEmailEx"
                         className="form-control"
                         value={this.state.updateValue.perfil}
-                        onChange={(e) => this.setState({updateValue: {perfil:e.target.value}})}
+                        onChange={e=>this.handlePerfil(e)}
                       />
                       
                       
@@ -280,7 +324,7 @@ export default class managment extends Component {
                         id="defaultFormCardEmailEx"
                         className="form-control"
                         value={this.state.updateValue.observacion}
-                        onChange={(e) => this.setState({updateValue: {observacion:e.target.value}})}
+                        onChange={e=>this.handleObservacion(e)}
                       />
                       <div className="text-center py-4 mt-3">
                       </div>

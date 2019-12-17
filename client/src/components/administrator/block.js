@@ -67,20 +67,19 @@ export default class managment extends Component {
   handleClick() {
     console.log("holiiii :(");
   }
-  handleUpdate(){
+  handleUpdate(e){
+    console.log(e.target.id);
     let modalNumber = "modal4";
-    this.setState({ [modalNumber]: !this.state[modalNumber] });
-    console.log("hiiii")
-    console.log(this.state.updateValue)
-    var k= axios.get('http://localhost:8081/users/'+this.state.id)
-    console.log(k)
+
     var obj;var i;
     for (i = 0; i < this.state.data.rows.length; i++) {
+      
       var dataIn = this.state.data.rows[i];
-      if (dataIn.apellido === this.state.id) {
+      //console.log(dataIn.apellido);
+      if (dataIn.apellido === e.target.id) {
         console.log("holiii");
     
-        obj=Object.assign(dataIn,this.state.updateValue)
+        obj=Object.assign(dataIn,{correo:""})
         console.log("obj")
         console.log(obj)
         this.setState({ updateValue: dataIn });
@@ -114,7 +113,7 @@ export default class managment extends Component {
               <MDBBtn
                 color="green"
                 id={category[i].apellido}
-                onClick={this.toggle}
+                onClick={this.handleUpdate}
                 size="sm"
               >
                 Block

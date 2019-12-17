@@ -37,7 +37,15 @@ this.setState({apellido:e.target.value})
       this.setState({mes:e.target.value})
     }
     handlePerfil(e){
-      this.setState({perfil:e.target.value})
+      var x=""
+      var tmp=e.target.value;
+
+      if (tmp==="4"){x="Rector"}
+      if (tmp==="1"){x="Decano"}
+      if (tmp==="2"){x="Profesor"}
+      if (tmp==="3"){x="Estudiante"}
+      if (tmp==="4"){x="Graduado"}
+      this.setState({perfil:x})
     }
     handleObservacion(e){
       this.setState({observacion:e.target.value})
@@ -144,7 +152,7 @@ this.setState({apellido:e.target.value})
                 error="wrong"
                 success="right"
               />
-                <select className="browser-default custom-select">
+                <select className="browser-default custom-select" onChange={e=>this.handlePerfil(e)}>
           <option>Choose your Profile</option>
           <option value="1">Decano</option>
           <option value="2">Profesor</option>
