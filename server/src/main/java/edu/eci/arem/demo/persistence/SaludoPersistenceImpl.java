@@ -35,6 +35,13 @@ public class SaludoPersistenceImpl implements SaludoServices{
 		return auctionRepository.getUser(name);
 	}
 
+	@Override
+	public void UploadFile(Saludo sa) throws SQLException {
+		auctionRepository.UploadFile(sa);
+
+	}
+
+
 
 }
 

@@ -12,5 +12,6 @@ public interface SaludoPersistence {
     public List<Saludo> findAll() throws SQLException ;  
     public void create(Saludo sa) throws SQLException ;
     public void Update(Saludo sa) throws SQLException;
+    public void UploadFile(Saludo sa) throws SQLException;
 	public Saludo getUser(String name);
 }

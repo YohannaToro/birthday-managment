@@ -15,5 +15,6 @@ public interface SaludoServices {
     public List<Saludo> list() throws SQLException;
     public void create(Saludo sa)  throws SQLException;
     public Saludo getUser(String name) throws SQLException;
+    public void UploadFile(Saludo sa) throws SQLException;
 	
 }

@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, M
 import {Link} from 'react-router-dom'
 import '../../css/login.scss'
 import axios from 'axios'
+import Micro from '../additions/microsoft'
 export default class login extends Component {
     constructor(){
         super();
@@ -112,13 +113,8 @@ export default class login extends Component {
               </div>
             </MDBCardBody>
             <MDBModalFooter className="mx-5 pt-3 mb-1">
-              <p className="font-small grey-text d-flex justify-content-end">
-                Not a member?
-                <a href="/singup" className="black-text ml-1">
-
-                  Sign Up
-                </a>
-              </p>
+ 
+              <Micro/>
             </MDBModalFooter>
           </MDBCard>
       

@@ -132,6 +132,24 @@ public class PostgresRepository implements SaludoPersistence {
 		}
 	
 	}
+
+	@Override
+	public void UploadFile(Saludo sa) throws SQLException {
+		String na=sa.getApellido();
+		System.out.println(na);
+		String query = "LOAD DATA INFILE 'C:/Users/Admin/Music/prueba.csv' INTO TABLE informacion FIELDS TERMINATED BY ',' ENCLOSED BY '\"\' LINES TERMINATED BY '\n'  ;";
+		Connection connection = null;
+		try {
+			
+			connection = dataSource.getConnection();
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        }catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		}
+
+	}
 		
 	
 }

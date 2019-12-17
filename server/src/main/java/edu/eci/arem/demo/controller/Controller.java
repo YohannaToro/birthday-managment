@@ -65,5 +65,16 @@ public class Controller {
 	        return new ResponseEntity<>("no hizo post",HttpStatus.NOT_FOUND);
 	    }
 	}
+	@PostMapping(value="/users/massiveCvs")
+	public ResponseEntity<?> postMethodFile(@RequestBody Saludo sa) {
+
+		 try {
+	        auctionRepository.UploadFile(sa);
+		
+		 return new ResponseEntity<>("done", HttpStatus.ACCEPTED);
+	    } catch (Exception ex) {
+	        return new ResponseEntity<>("no hizo post",HttpStatus.NOT_FOUND);
+	    }
+	}
 	
 }
