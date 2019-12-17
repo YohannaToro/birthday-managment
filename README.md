@@ -95,7 +95,8 @@ ejecutar proyecto
 npm start
 ```
 
-
+## Arquitectura
+![Captura55](https://user-images.githubusercontent.com/37119524/70970579-b4cb4a80-206c-11ea-846e-2c2da62d7202.PNG)
 
 
 
